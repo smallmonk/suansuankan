@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">算算看</string>
+
+    <string name="title_main_activity">填一填</string>
+    <string name="action_confirm">完成了</string>
+    <string name="action_retry">再試一次</string>
+    <string name="action_new">新的一题</string>
+</resources>

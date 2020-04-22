@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lytNumbers"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_main_activity"/>
+
+    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lytNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintBottom_toTopOf="@+id/lytConfirm"
+        android:fillViewport="false">
+
+    <LinearLayout
+        android:id="@+id/lytNumberInternal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|top"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/box1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/my_edit_text_border"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="10"/>
+
+        <EditText
+            android:id="@+id/box2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/my_edit_text_border"
+            android:text="12"/>
+
+        <EditText
+            android:id="@+id/box3"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/my_edit_text_border"
+            android:text="14"/>
+
+        <EditText
+            android:id="@+id/box4"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/my_edit_text_border"
+            android:text="16"/>
+
+        <EditText
+            android:id="@+id/box5"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/my_edit_text_border"
+            android:text="18"/>
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/lytConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lytNumbers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:background="@drawable/my_edit_text_border"
+            android:text="@string/action_confirm"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
