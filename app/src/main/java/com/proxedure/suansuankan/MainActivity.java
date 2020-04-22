@@ -18,8 +18,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int TOTAL_NUMBER = 5;
 
-    private final int[] numberArray = new int[TOTAL_NUMBER];
+    private static final int[] numberArray = new int[TOTAL_NUMBER];
+    private static int hide1;
+    private static int hide2;
+    private static boolean isInit = false;
+
     private final ArrayList<EditText> editTextArray = new ArrayList<>();
+
+    public MainActivity() {
+        if (!isInit) {
+            newQuiz();
+            isInit = true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        editTextArray.clear();
         editTextArray.add(binding.box1);
         editTextArray.add(binding.box2);
         editTextArray.add(binding.box3);
@@ -35,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         editTextArray.add(binding.box5);
 
         initListeners();
-        newQuiz();
+
+        updateQuizView();
     }
 
     private void initListeners() {
@@ -50,14 +63,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void newQuiz() {
-        if (numberArray.length != editTextArray.size()) {
-            return;
-        }
-
         Random rand = new Random();
 
-        final int hide1 = rand.nextInt(5);
-        int hide2 = rand.nextInt(4);
+        hide1 = rand.nextInt(5);
+        hide2 = rand.nextInt(4);
         if (hide2 >= hide1) {
             hide2++;
         }
@@ -66,10 +75,18 @@ public class MainActivity extends AppCompatActivity {
         int diff = 2;
         for (int i=0; i<numberArray.length; i++) {
             numberArray[i] = start + i * diff;
+        }
+    }
 
+    private void updateQuizView() {
+        if (numberArray.length != editTextArray.size()) {
+            return;
+        }
+
+        for (int i=0; i<numberArray.length; i++) {
             EditText currentEdit = editTextArray.get(i);
             if (hide1 == i || hide2 == i) {
-                editTextArray.get(i).setText("");
+                currentEdit.setText("");
                 currentEdit.setEnabled(true);
             } else {
                 currentEdit.setText(String.valueOf(numberArray[i]));
@@ -119,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.dismiss();
                 if (isCorrect) {
                     newQuiz();
+                    updateQuizView();
                 }
             }
         });
