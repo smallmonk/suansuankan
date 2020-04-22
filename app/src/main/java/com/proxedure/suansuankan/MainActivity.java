@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.proxedure.suansuankan.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -53,11 +54,27 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        int start = 10;
+        Random rand = new Random();
+
+        final int hide1 = rand.nextInt(5);
+        int hide2 = rand.nextInt(4);
+        if (hide2 >= hide1) {
+            hide2++;
+        }
+
+        int start = rand.nextInt(91);
         int diff = 2;
         for (int i=0; i<numberArray.length; i++) {
             numberArray[i] = start + i * diff;
-            editTextArray.get(i).setText(String.valueOf(numberArray[i]));
+
+            EditText currentEdit = editTextArray.get(i);
+            if (hide1 == i || hide2 == i) {
+                editTextArray.get(i).setText("");
+                currentEdit.setEnabled(true);
+            } else {
+                currentEdit.setText(String.valueOf(numberArray[i]));
+                currentEdit.setEnabled(false);
+            }
         }
     }
 
