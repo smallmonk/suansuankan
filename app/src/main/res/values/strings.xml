@@ -3,6 +3,10 @@
 
     <string name="title_main_activity">填一填</string>
     <string name="action_confirm">完成了</string>
-    <string name="action_retry">再試一次</string>
+
+    <string name="message_correct">恭喜你答对了！</string>
+    <string name="message_incorrect">答案不一样哦~</string>
+    <string name="action_retry">继续尝试</string>
     <string name="action_new">新的一题</string>
+    <string name="action_exit">结束</string>
 </resources>
