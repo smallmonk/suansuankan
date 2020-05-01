@@ -16,11 +16,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
-    private static final int TOTAL_NUMBER = 5;
+    private static final int TOTAL_NUMBER = 6;
+    private static final int TOTAL_HIDE = 3;
+    private static final int DIFF = 3;
 
     private static final int[] numberArray = new int[TOTAL_NUMBER];
-    private static int hide1;
-    private static int hide2;
+    private static int[] hide = new int[TOTAL_HIDE];
     private static boolean isInit = false;
 
     private final ArrayList<EditText> editTextArray = new ArrayList<>();
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         editTextArray.add(binding.box3);
         editTextArray.add(binding.box4);
         editTextArray.add(binding.box5);
+        editTextArray.add(binding.box6);
 
         initListeners();
 
@@ -65,14 +67,18 @@ public class MainActivity extends AppCompatActivity {
     private void newQuiz() {
         Random rand = new Random();
 
-        hide1 = rand.nextInt(5);
-        hide2 = rand.nextInt(4);
-        if (hide2 >= hide1) {
-            hide2++;
+        int randomMax = TOTAL_NUMBER;
+        for (int i=0; i<TOTAL_HIDE; i++) {
+            hide[i] = rand.nextInt(randomMax - i);
+            for (int j=0; j<i; j++) {
+                if (hide[i] >= hide[j]) {
+                    hide[i] ++;
+                }
+            }
         }
 
-        int start = rand.nextInt(91);
-        int diff = 2;
+        int start = rand.nextInt(82);
+        int diff = DIFF;
         for (int i=0; i<numberArray.length; i++) {
             numberArray[i] = start + i * diff;
         }
@@ -85,7 +91,15 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i=0; i<numberArray.length; i++) {
             EditText currentEdit = editTextArray.get(i);
-            if (hide1 == i || hide2 == i) {
+            boolean isHidden = false;
+            for (int h=0; h<TOTAL_HIDE; h++) {
+                if (hide[h] == i) {
+                    isHidden = true;
+                    break;
+                }
+            }
+
+            if (isHidden) {
                 currentEdit.setText("");
                 currentEdit.setEnabled(true);
             } else {
@@ -100,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
 
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<TOTAL_NUMBER; i++) {
             try {
                 int val = Integer.parseInt(editTextArray.get(i).getText().toString());
 

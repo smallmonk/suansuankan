@@ -101,6 +101,19 @@
             android:background="@drawable/my_edit_text_border"
             android:text="18"/>
 
+        <EditText
+            android:id="@+id/box6"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:background="@drawable/my_edit_text_border"
+            android:text="18"/>
+
     </LinearLayout>
 
     </HorizontalScrollView>
